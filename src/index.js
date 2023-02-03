@@ -1,4 +1,15 @@
 setInterval(function () {
+  //Bogota
+  let bogotaElement = document.querySelector("#bogota");
+  let bogotaDateElement = bogotaElement.querySelector(".date");
+  let bogotaTimeElement = bogotaElement.querySelector(".time");
+  let bogotaTime = moment();
+
+  bogotaDateElement.innerHTML = bogotaTime.format("MMMM Do YYYY");
+  bogotaTimeElement.innerHTML = `${bogotaTime
+    .tz("America/Bogota")
+    .format("HH:mm:ss")}`;
+
   //Los Angeles
   let losAngelesElement = document.querySelector("#los-angeles");
   let losAngelesDateElement = losAngelesElement.querySelector(".date");
@@ -14,7 +25,11 @@ setInterval(function () {
 // connect the selector with the info showed bellow
 function updateCity(event) {
   let cityTimeZone = event.target.value;
-  let: cityName = cityTimeZone.replace("_", " ").split("/")[1];
+  if (cityTimeZone === "current") {
+    cityTimeZone = moment.tz.guess();
+  }
+
+  let cityName = cityTimeZone.replace("_", " ").split("/")[1];
   let cityTime = moment().tz(cityTimeZone);
   let citiesElement = document.querySelector("#cities");
   citiesElement.innerHTML = `

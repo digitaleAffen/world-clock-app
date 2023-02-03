@@ -15,27 +15,29 @@
     <div class="project-container">
       <h1>World Clock App</h1>
 
-      <select name="city" id="city">
+      <select name="city-selector" id="city-selector">
         <option value="">Select a city</option>
-        <option value="berlin">Berlin</option>
+        <option value="Europe/Berlin">Berlin</option>
+        <option value="America/Los_Angeles">Los Angeles</option>
       </select>
 
-      <div class="city-container" id="berlin">
-        <div>
-          <h2>Berlin</h2>
-          <div class="date">February 2nd 2023</div>
+      <div id="cities">
+        <div class="city-container" id="berlin">
+          <div>
+            <h2>Berlin</h2>
+            <div class="date">February 2nd 2023</div>
+          </div>
+          <div class="time">03:25:18</div>
         </div>
-        <div class="time">03:25:18</div>
-      </div>
-      <div class="city-container" id="los-angeles">
-        <div>
-          <h2>Los Angeles</h2>
-          <div class="date"></div>
+        <div class="city-container" id="los-angeles">
+          <div>
+            <h2>Los Angeles</h2>
+            <div class="date"></div>
+          </div>
+          <div class="time"></div>
         </div>
-        <div class="time"></div>
       </div>
     </div>
-
     <footer>
       Coded by Gio Lamadrid
       <a href="https://github.com/digitaleAffen/world-clock-app" target="_blank"

@@ -1,15 +1,4 @@
 setInterval(function () {
-  //Bogota
-  let bogotaElement = document.querySelector("#bogota");
-  let bogotaDateElement = bogotaElement.querySelector(".date");
-  let bogotaTimeElement = bogotaElement.querySelector(".time");
-  let bogotaTime = moment();
-
-  bogotaDateElement.innerHTML = bogotaTime.format("MMMM Do YYYY");
-  bogotaTimeElement.innerHTML = `${bogotaTime
-    .tz("America/Bogota")
-    .format("HH:mm:ss")}`;
-
   //Los Angeles
   let losAngelesElement = document.querySelector("#los-angeles");
   let losAngelesDateElement = losAngelesElement.querySelector(".date");
@@ -19,6 +8,17 @@ setInterval(function () {
   losAngelesDateElement.innerHTML = losAngelesTime.format("MMMM Do YYYY");
   losAngelesTimeElement.innerHTML = `${losAngelesTime
     .tz("America/Los_Angeles")
+    .format("HH:mm:ss")}`;
+
+  //Bogota
+  let bogotaElement = document.querySelector("#bogota");
+  let bogotaDateElement = bogotaElement.querySelector(".date");
+  let bogotaTimeElement = bogotaElement.querySelector(".time");
+  let bogotaTime = moment();
+
+  bogotaDateElement.innerHTML = bogotaTime.format("MMMM Do YYYY");
+  bogotaTimeElement.innerHTML = `${bogotaTime
+    .tz("America/Bogota")
     .format("HH:mm:ss")}`;
 
   //Madrid
@@ -32,6 +32,17 @@ setInterval(function () {
     .tz("Europe/Madrid")
     .format("HH:mm:ss")}`;
 
+  //Tokyo
+  let tokyoElement = document.querySelector("#tokyo");
+  let tokyoDateElement = tokyoElement.querySelector(".date");
+  let tokyoTimeElement = tokyoElement.querySelector(".time");
+  let tokyoTime = moment();
+
+  tokyoDateElement.innerHTML = tokyoTime.format("MMMM Do YYYY");
+  tokyoTimeElement.innerHTML = `${tokyoTime
+    .tz("Asia/Tokyo")
+    .format("HH:mm:ss")}`;
+
   //Melbourne
   let melbourneElement = document.querySelector("#melbourne");
   let melbourneDateElement = melbourneElement.querySelector(".date");
@@ -42,25 +53,14 @@ setInterval(function () {
   melbourneTimeElement.innerHTML = `${melbourneTime
     .tz("Australia/Melbourne")
     .format("HH:mm:ss")}`;
-
-  //Melbourne
-  let tokyoElement = document.querySelector("#tokyo");
-  let tokyoDateElement = tokyoElement.querySelector(".date");
-  let tokyoTimeElement = tokyoElement.querySelector(".time");
-  let tokyoTime = moment();
-
-  tokyoDateElement.innerHTML = tokyoTime.format("MMMM Do YYYY");
-  tokyoTimeElement.innerHTML = `${tokyoTime
-    .tz("Asia/Tokyo")
-    .format("HH:mm:ss")}`;
 });
 
 // connect the selector with the info showed bellow
 function updateCity(event) {
   let cityTimeZone = event.target.value;
-  // if (cityTimeZone === "current") {
-  //   cityTimeZone = moment.tz.guess();
-  // }
+  if (cityTimeZone === "current") {
+    cityTimeZone = moment.tz.guess();
+  }
 
   let cityName = cityTimeZone.replace("_", " ").split("/")[1];
   let cityTime = moment().tz(cityTimeZone);
@@ -69,7 +69,7 @@ function updateCity(event) {
   let currentCityTimeZone = moment.tz.guess();
   let currentCityName = currentCityTimeZone.replace("_", " ").split("/")[1];
   let currentCityTime = moment().tz(currentCityTimeZone);
-  console.log(cityTime);
+
   citiesElement.innerHTML = `
   <div class="city-container">
           <div>
